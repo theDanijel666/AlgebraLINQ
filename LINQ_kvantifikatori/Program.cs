@@ -21,6 +21,61 @@ namespace LINQ_kvantifikatori
                 new Polaznik(){ID=7,Ime="Željko",Prezime="Mavrović",Starost=19},
                 new Polaznik(){ID=8,Ime="Mike",Prezime="Tyson",Starost=57}
             };
+
+            Console.WriteLine("=================================================");
+            Console.WriteLine("All operator - Method syntax");
+            Console.WriteLine("=================================================");
+
+            bool provjeri_ako_su_svi_tinejdjeri = polaznici.All(x => x.Starost > 12 && x.Starost < 20);
+            if(provjeri_ako_su_svi_tinejdjeri) Console.WriteLine("Svi su tinejđeri");
+            else Console.WriteLine("Nisu svi tinejđeri");
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("=================================================");
+            Console.WriteLine("Any operator - Method syntax");
+            Console.WriteLine("=================================================");
+
+            bool provjeri_ako_su_neki_tinejdjeri=polaznici.Any(x=>x.Starost>12 && x.Starost < 20);
+
+            if (provjeri_ako_su_neki_tinejdjeri) Console.WriteLine("Ima tinejđera u kolekciji");
+            else Console.WriteLine("Nema tinejđera u kolekciji.");
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("=================================================");
+            Console.WriteLine("Contains operator - Method syntax");
+            Console.WriteLine("=================================================");
+
+            List<int> brojevi=new List<int>() { 1,2,3,4,5,6,7,8 };
+            bool postoji_li_10 = brojevi.Contains(10);
+
+            if (postoji_li_10) Console.WriteLine("Kolekcija sadrži 10");
+            else Console.WriteLine("Kolekcija nema broj 10");
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("=================================================");
+            Console.WriteLine("Contains operator - Method syntax s klasama netočni način korištenja");
+            Console.WriteLine("=================================================");
+
+            Polaznik pol = new Polaznik() { ID = 4, Ime = "Clark", Prezime = "Kent", Starost = 20 };
+            bool postoji_li_pol_u_kolekciji = polaznici.Contains(pol);
+
+            if (postoji_li_pol_u_kolekciji) Console.WriteLine("Kolekcija sadrži " + pol.Ime + " " + pol.Prezime);
+            else Console.WriteLine("Nema "+pol.Ime + " " + pol.Prezime+" u kolekciji");
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("=================================================");
+            Console.WriteLine("Contains operator - Method syntax s klasama točni način korištenja");
+            Console.WriteLine("=================================================");
+
+            bool opet_provjera_pol = polaznici.Contains(pol, new UsporedbaPolaznika());
+
+            if(opet_provjera_pol) Console.WriteLine("Kolekcija sadrži " + pol.Ime + " " + pol.Prezime);
+            else Console.WriteLine("Nema " + pol.Ime + " " + pol.Prezime + " u kolekciji");
+
         }
     }
 
